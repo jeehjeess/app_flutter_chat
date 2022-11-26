@@ -110,6 +110,8 @@ class ChatScreenState extends State<ChatScreen> {
       'senderName': user?.displayName,
       "sendPhotoUrl": user?.photoURL,
       "localizacao": await GetAddressFromLatLong(position),
+      "latitude": position.latitude,
+      "longitude": position.longitude,
     };
 
     if (imgFile != null) {
@@ -204,8 +206,7 @@ class ChatScreenState extends State<ChatScreen> {
       print(placemarks);
       Placemark place = placemarks[0];
       Address =
-      '${place.street}, ${place.subLocality}, ${place.locality}, ${place
-          .postalCode}, ${place.country}';
+      '${place.street}, ${place.subLocality}, ${place.locality}, ${place.country}';
       setState(() {});
     }
     return Address;

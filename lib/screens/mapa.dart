@@ -18,6 +18,7 @@ class Mapa extends StatefulWidget {
 class MapaState extends State<Mapa> {
   Completer<GoogleMapController> _controller = Completer();
   final CollectionReference _locais = FirebaseFirestore.instance.collection("locais");
+  final CollectionReference _mensagens = FirebaseFirestore.instance.collection("mensagens");
 
   Set<Marker> _marcadores = {};
   double _lat = 20.5937;
@@ -29,6 +30,7 @@ class MapaState extends State<Mapa> {
   );
 
   _adicionaMarcador(LatLng latLng) async{
+    
     List<Placemark> listaEnderecos = await placemarkFromCoordinates(latLng.latitude, latLng.longitude);
     if (listaEnderecos != null && listaEnderecos.length > 0){
       Placemark endereco = listaEnderecos[0];
@@ -108,6 +110,7 @@ class MapaState extends State<Mapa> {
               )
             ],
           )),
+
     );
   }
 

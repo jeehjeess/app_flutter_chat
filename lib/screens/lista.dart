@@ -10,7 +10,7 @@ class Lista extends StatefulWidget{
 
 class ListaState extends State<Lista>{
   final CollectionReference _locais =
-  FirebaseFirestore.instance.collection("locais");
+  FirebaseFirestore.instance.collection("mensagens");
 
   _abrirMapa(String idLocal){
     Navigator.push(
@@ -58,7 +58,7 @@ class ListaState extends State<Lista>{
                     itemCount: locais.length,
                     itemBuilder: (context, index){
                       DocumentSnapshot item = locais[index];
-                      String titulo = item['titulo'];
+                      String titulo = item['senderName'];
                       String idLocal = item.id;
                       return GestureDetector(
                         onTap: (){
